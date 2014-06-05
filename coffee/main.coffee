@@ -32,6 +32,41 @@ init = ->
 		createAnimal 3
 	else
 		createAnimal 4
+$(document).ready ->
+	$(".sharebtn").click ->
+		$(".sharebox").show()
+	$(".sharebox").click (e)->
+		if $(e.target).is(".sharebox")
+			$(".sharebox").hide()
+	$(".shareweixin").click ->
+		$(".shareweixin").hide()
+	$("[data-share]").click ->
+		if $(this).data('share') is "weixin"
+			$(".sharebox").hide()
+			$(".shareweixin").show()
+			return false
+		list = 
+			"qweibo":"http://v.t.qq.com/share/share.php?title={title}&url={url}&pic={pic}"
+			"renren":"http://share.renren.com/share/buttonshare?title={title}&link={url}&pic={pic}"
+			"weibo":"http://v.t.sina.com.cn/share/share.php?title={title}&url={url}&pic={pic}"
+			"qzone":"http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={url}&title={title}&pic={pic}"
+			"facebook":"http://www.facebook.com/sharer/sharer.php?s=100&p[url]={url}}&p[title]={title}&p[summary]={title}&pic={pic}"
+			"twitter":"https://twitter.com/intent/tweet?text={title}&pic={pic}"
+			"kaixin":"http://www.kaixin001.com/rest/records.php?content={title}&url={url}&pic={pic}"
+			"douban":"http://www.douban.com/share/service?bm=&image={pic}&href={url}&updated=&name={title}"
+		showShareBox list[$(this).data('share')],$(this).data('text'),window.location.href,$("#image").attr 'src'
+	
+showShareBox = (url,content,sendUrl,pic = "")->
+	content = content
+	shareContent = encodeURIComponent content
+	pic = encodeURIComponent pic
+	url = url.replace "{title}",shareContent
+	url = url.replace "{pic}",pic
+	# 分享地址
+	backUrl = encodeURIComponent sendUrl
+	url = url.replace "{url}",backUrl
+	# console.log url
+	window.open url,'_blank'
 createAnimal = (i)->
 	for a in [0...6]
 		$("#ani"+(a+1)).attr 'src','animal/'+((i*6)+a)+".jpg"
@@ -92,8 +127,9 @@ createimg = ->
 	messageField.y = canvas.height-71*1.6
 
 	bg = new createjs.Shape()
-	bg.alpha = 0.3
-	p  = bg.graphics.beginFill("#000").drawRect(0,canvas.height-80*1.6,445,200)
+	# 黑色背景底图
+	# bg.alpha = 0.3
+	# p  = bg.graphics.beginFill("#000").drawRect(0,canvas.height-80*1.6,445,200)
 
 
 	stage.addChild bg,messageField
@@ -102,14 +138,15 @@ createimg = ->
 	dataURL = canvas.toDataURL("image/png")
 	console.log dataURL
 	# submit the image and go to the new page create a share page link.
-	postimg dataURL.replace(/^data:image\/(png|jpg);base64,/, "")
+	postimg val,dataURL.replace(/^data:image\/(png|jpg);base64,/, "")
 
-postimg = (data)->
+postimg = (val,data)->
+	$(".loading").show()
 	$.ajax
 		type:"post"
 		dataType:"json"
 		url:"createimg.php"
-		data:[{name:"data",value:data}]
+		data:[{name:"data",value:data},{name:"text",value:val}]
 		success: (msg)->
 			console.log msg
 			if msg.state is 'success'

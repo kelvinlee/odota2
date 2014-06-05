@@ -660,8 +660,17 @@ body {
 img {
   width: 100%;
 }
+.homepage {
+  padding-bottom: 20px;
+}
 .homepage .text {
   width: 79.6875%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0px;
+}
+.homepage .text1 {
+  width: 100%;
   height: auto;
   margin: 0 auto;
   padding: 0px;
@@ -725,6 +734,12 @@ img {
   margin: 0 auto;
   padding: 0px;
 }
+.secondpage .text1 {
+  width: 76.25%;
+  height: auto;
+  float: left;
+  margin-left: 5%;
+}
 .secondpage .mini {
   float: right;
   margin-right: 15px;
@@ -733,6 +748,7 @@ img {
 }
 .thirdpage {
   display: none;
+  padding-bottom: 20px;
 }
 .thirdpage .text {
   width: 79.6875%;
@@ -792,6 +808,12 @@ img {
   height: auto;
   margin: 0 auto;
   padding: 0px;
+}
+.thirdpage .text1 {
+  width: 76.25%;
+  height: auto;
+  float: left;
+  margin-left: 5%;
 }
 .thirdpage .mini {
   float: right;
@@ -912,4 +934,52 @@ img {
   height: auto;
   padding: 10px;
   padding-top: 0px;
+}
+.fifth .joinbtn {
+  position: absolute;
+  top: 88%;
+  left: 50%;
+  width: 46.875%;
+  height: auto;
+  margin-left: -23.4375%;
+}
+.sharebox,
+.shareweixin,
+.loading {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  background: rgba(0, 0, 0, 0.5);
+}
+.sharebox a,
+.shareweixin a,
+.loading a {
+  display: inline-block;
+  margin-top: 65%;
+  text-align: center;
+  width: 24%;
+  height: auto;
+}
+.sharebox a img,
+.shareweixin a img,
+.loading a img {
+  width: 50%;
+}
+.sharebox p,
+.shareweixin p,
+.loading p {
+  margin-top: 50%;
+  color: #fff;
+  font-style: 16px;
+  text-align: center;
+}
+.share-weixin {
+  position: absolute;
+  top: -1000px;
+  opacity: 0;
+  z-index: -1;
 }

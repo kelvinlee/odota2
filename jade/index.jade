@@ -5,6 +5,7 @@ block title
 
 //- 内容
 block content_here
+	img.share-weixin(src="img/banner-1.jpg")
 	div.homepage
 		div.banner
 			img(src="img/banner-1.jpg")
@@ -12,6 +13,8 @@ block content_here
 			img(src="img/banner-text.jpg")
 		div.star(onclick="star()")
 			img(src="img/btn-join.jpg")
+		div.text1
+			img(src="img/text-1.jpg")
 	div.secondpage
 		div.text
 			img(src="img/banner-text.jpg")
@@ -29,9 +32,11 @@ block content_here
 				img#ani5(src="") 
 			div.box-item(onclick="selectType(6)")
 				img#ani6(src="")
+		div.text1
+			img(src="img/text-2.jpg")
 		div.mini
 			img(src="img/icon-list.png")
-	div.thirdpage
+	div.thirdpage.clearfix
 		div.text
 			img(src="img/banner-text.jpg")
 		div.box-item
@@ -40,6 +45,8 @@ block content_here
 					-for (var i=0;i<6;i++)
 						div.slide
 							img(src="",onclick="readyto(this)")
+		div.text1
+			img(src="img/text-3.jpg")
 		div#slidermini.mini
 			span.on
 			span
@@ -57,3 +64,5 @@ block content_here
 				textarea(name="text",type="text",placeholder="请输入文字")
 		div.submit(onclick="createimg()")
 			img(src="img/btn-submit.jpg")
+	div.loading
+		p 正在努力上传图片,请稍后...

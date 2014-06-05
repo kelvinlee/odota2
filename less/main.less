@@ -8,8 +8,13 @@ img {
 }
 .homepage {
   // display: none;
+  padding-bottom: 20px;
   .text {
     .wh(510/640*100%);
+    .mp();
+  }
+  .text1 {
+    .wh(640/640*100%);
     .mp();
   }
   .star {
@@ -61,6 +66,11 @@ img {
       }
     }
   }
+  .text1{
+    .wh(488/640*100%);
+    float: left;
+    margin-left: 5%;
+  }
   .mini {
     float:right;
     margin-right: 15px;
@@ -69,6 +79,7 @@ img {
 }
 .thirdpage {
   display: none;
+  padding-bottom: 20px;
   .text {
     .wh(510/640*100%);
     .mp();
@@ -116,6 +127,12 @@ img {
       .wh(100%);
       .mp();
     }
+  }
+
+  .text1{
+    .wh(488/640*100%);
+    float: left;
+    margin-left: 5%;
   }
   .mini {
     float:right;
@@ -211,4 +228,42 @@ img {
     padding:10px;
     padding-top: 0px;
   }
+  .joinbtn {
+    .tl(88%,50%);
+    .wh(300/640*100%);
+    margin-left:-300/640*50%
+  }
+}
+
+
+.sharebox,.shareweixin,.loading {
+  display: none;
+  .tl();
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  a {
+    display: inline-block;
+    margin-top:65%;
+    text-align: center;
+    .wh(24%);
+    img {
+      width: 50%;
+
+    }
+  }
+  p {
+    margin-top: 50%;
+    color: #fff;
+    font-style: 16px;
+    text-align: center;
+  }
+} 
+
+.share-weixin {
+  position: absolute;
+  top:-1000px;
+  opacity: 0;
+  z-index: -1;
 }

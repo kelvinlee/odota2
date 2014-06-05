@@ -283,7 +283,7 @@ var Zepto=function(){function L(t){return null==t?String(t):j[T.call(t)]||"objec
      Begin main.coffee
 --------------------------------------------
  */
-var canvas, createAnimal, createimg, init, insetIMG, isScrolling_move, myFunction, postimg, readyto, selectType, stage, star;
+var canvas, createAnimal, createimg, init, insetIMG, isScrolling_move, myFunction, postimg, readyto, selectType, showShareBox, stage, star;
 
 isScrolling_move = false;
 
@@ -310,6 +310,54 @@ init = function() {
   } else {
     return createAnimal(4);
   }
+};
+
+$(document).ready(function() {
+  $(".sharebtn").click(function() {
+    return $(".sharebox").show();
+  });
+  $(".sharebox").click(function(e) {
+    if ($(e.target).is(".sharebox")) {
+      return $(".sharebox").hide();
+    }
+  });
+  $(".shareweixin").click(function() {
+    return $(".shareweixin").hide();
+  });
+  return $("[data-share]").click(function() {
+    var list;
+    if ($(this).data('share') === "weixin") {
+      $(".sharebox").hide();
+      $(".shareweixin").show();
+      return false;
+    }
+    list = {
+      "qweibo": "http://v.t.qq.com/share/share.php?title={title}&url={url}&pic={pic}",
+      "renren": "http://share.renren.com/share/buttonshare?title={title}&link={url}&pic={pic}",
+      "weibo": "http://v.t.sina.com.cn/share/share.php?title={title}&url={url}&pic={pic}",
+      "qzone": "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={url}&title={title}&pic={pic}",
+      "facebook": "http://www.facebook.com/sharer/sharer.php?s=100&p[url]={url}}&p[title]={title}&p[summary]={title}&pic={pic}",
+      "twitter": "https://twitter.com/intent/tweet?text={title}&pic={pic}",
+      "kaixin": "http://www.kaixin001.com/rest/records.php?content={title}&url={url}&pic={pic}",
+      "douban": "http://www.douban.com/share/service?bm=&image={pic}&href={url}&updated=&name={title}"
+    };
+    return showShareBox(list[$(this).data('share')], $(this).data('text'), window.location.href, $("#image").attr('src'));
+  });
+});
+
+showShareBox = function(url, content, sendUrl, pic) {
+  var backUrl, shareContent;
+  if (pic == null) {
+    pic = "";
+  }
+  content = content;
+  shareContent = encodeURIComponent(content);
+  pic = encodeURIComponent(pic);
+  url = url.replace("{title}", shareContent);
+  url = url.replace("{pic}", pic);
+  backUrl = encodeURIComponent(sendUrl);
+  url = url.replace("{url}", backUrl);
+  return window.open(url, '_blank');
 };
 
 createAnimal = function(i) {
@@ -375,7 +423,7 @@ insetIMG = function(url) {
 };
 
 createimg = function() {
-  var bg, dataURL, messageField, p, val;
+  var bg, dataURL, messageField, val;
   val = $("[name=text]").val() || $("[name=text]").html();
   console.log(val);
   $("[name=text]").hide();
@@ -386,16 +434,15 @@ createimg = function() {
   messageField.x = 20;
   messageField.y = canvas.height - 71 * 1.6;
   bg = new createjs.Shape();
-  bg.alpha = 0.3;
-  p = bg.graphics.beginFill("#000").drawRect(0, canvas.height - 80 * 1.6, 445, 200);
   stage.addChild(bg, messageField);
   stage.update();
   dataURL = canvas.toDataURL("image/png");
   console.log(dataURL);
-  return postimg(dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
+  return postimg(val, dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
 };
 
-postimg = function(data) {
+postimg = function(val, data) {
+  $(".loading").show();
   return $.ajax({
     type: "post",
     dataType: "json",
@@ -404,6 +451,9 @@ postimg = function(data) {
       {
         name: "data",
         value: data
+      }, {
+        name: "text",
+        value: val
       }
     ],
     success: function(msg) {

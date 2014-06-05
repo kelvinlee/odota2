@@ -15,13 +15,7 @@
     <script src="js/libs/soundjs-0.5.2.min.js"></script>
   </head>
 <?php
-  ini_set('date.timezone','Asia/Shanghai');
-
-  $db_config["hostname"]    = "localhost";    //服务器地址 
-  $db_config["username"]    = "root";        //数据库用户名 
-  $db_config["password"]    = "mysql@lhq";        //数据库密码 
-  $db_config["database"]    = "mydemo";        //数据库名称 
-  $db_config["charset"]        = "utf8"; 
+  include('db.php');
   include('function.php');
   include('mysql.class.php');
   $db    = new db(); 
@@ -30,8 +24,18 @@
   $row = $db->row_select('share-mengchong', 'id='.gl($_GET['id']));
 ?>
   <body onload="">
-    <div class="fifth"><a href="index.html"><img src="<?php echo $row[0]["url"]?>" class="pet"></a><img src="img/share-bg.jpg">
+    <div class="fifth"><img id="image" src="http://www.odota2.com/<?php echo $row[0]["url"]?>" class="pet"><img src="img/share-bg.jpg">
       <div class="sharebtn"><img src="img/sharebtn.png"></div>
+      <div class="joinbtn"><a href="index.html"><img src="img/btn-join.jpg" alt=""></a></div>
+    </div>
+    <div class="sharebox">
+      <a href="#" data-share="weibo" data-text="<?php echo $row[0]["text"]?>"><img src="img/icon-1.png" alt=""></a>
+      <a href="#" data-share="qweibo" data-text="<?php echo $row[0]["text"]?>"><img src="img/icon-2.png" alt=""></a>
+      <a href="#" data-share="weixin" data-text="<?php echo $row[0]["text"]?>"><img src="img/icon-3.png" alt=""></a>
+      <a href="#" data-share="douban" data-text="<?php echo $row[0]["text"]?>"><img src="img/icon-4.png" alt=""></a>
+    </div>
+    <div class="shareweixin">
+      <p>点击右上角分享给朋友或分享朋友圈</p>
     </div>
     <script src="js/main.js"></script>
   </body>
