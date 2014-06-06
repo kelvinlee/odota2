@@ -38,6 +38,9 @@ $(document).ready ->
 	$(".sharebox").click (e)->
 		if $(e.target).is(".sharebox")
 			$(".sharebox").hide()
+	$(".close").click ->
+		$(".sharebox").hide()
+		
 	$(".shareweixin").click ->
 		$(".shareweixin").hide()
 	$("[data-share]").click ->
@@ -75,14 +78,28 @@ createAnimal = (i)->
 star = ->
 	$(".homepage").hide()
 	$(".secondpage").show()
+back1 = ->
+	$(".homepage").show()
+	$(".secondpage").hide()
+back2 = ->
+	$(".homepage").hide()
+	$(".secondpage").show()
+	$(".thirdpage").hide()
+back3 = ->
+	$(".homepage").hide()
+	$(".secondpage").hide()
+	$(".thirdpage").show()
+	$(".fourthpage").hide()
 
+_index = 0
 selectType = (e)->
-
+	
 	$(".homepage").hide()
 	$(".secondpage").hide()
 	$(".thirdpage").show()
 	x = $(".slide-group").width()*(e-1)
 	console.log x,e,$(".slide-group").width()
+	_index = e
 	$(".slide-group").css
 		"-webkit-transition": "0s"
 		"transition": "0s"
@@ -98,9 +115,13 @@ readyto = (e)->
 	$(".homepage").hide()
 	$(".secondpage").hide()
 	$(".thirdpage").hide()
-	insetIMG $(e).attr 'src'
+	if e
+		insetIMG $(e).attr 'src'
+	else
+		insetIMG $(".slide-group .slide").eq(_index-1).find("img").attr 'src'
 
 myFunction = (evt)->
+	console.log evt.detail.slideNumber
 	$("#slidermini span").removeClass 'on'
 	$("#slidermini span").eq(evt.detail.slideNumber).addClass 'on'
 
@@ -118,6 +139,9 @@ insetIMG = (url)->
 createimg = ->
 	val = $("[name=text]").val() || $("[name=text]").html()
 	console.log val
+	if val is ""
+		alert "请输入文字."
+		return false
 	$("[name=text]").hide()
 	messageField = new createjs.Text val, 'normal 24px Arial', "#ffd200"
 	messageField.maxWidth = 445 - 40

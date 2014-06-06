@@ -664,7 +664,7 @@ img {
   padding-bottom: 20px;
 }
 .homepage .text {
-  width: 79.6875%;
+  width: 100%;
   height: auto;
   margin: 0 auto;
   padding: 0px;
@@ -686,7 +686,7 @@ img {
   display: none;
 }
 .secondpage .text {
-  width: 79.6875%;
+  width: 100%;
   height: auto;
   margin: 0 auto;
   padding: 0px;
@@ -735,10 +735,10 @@ img {
   padding: 0px;
 }
 .secondpage .text1 {
-  width: 76.25%;
+  width: 23.4375%;
   height: auto;
   float: left;
-  margin-left: 5%;
+  margin-left: 38%;
 }
 .secondpage .mini {
   float: right;
@@ -746,12 +746,19 @@ img {
   width: 10.15625%;
   height: auto;
 }
+.secondpage .next {
+  width: 46.875%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0px;
+  padding: 10px 0px;
+}
 .thirdpage {
   display: none;
   padding-bottom: 20px;
 }
 .thirdpage .text {
-  width: 79.6875%;
+  width: 100%;
   height: auto;
   margin: 0 auto;
   padding: 0px;
@@ -764,7 +771,7 @@ img {
   height: auto;
   margin: 0 auto;
   padding: 0px;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
   background-size: contain;
   text-align: center;
   margin-top: 13px;
@@ -809,11 +816,25 @@ img {
   margin: 0 auto;
   padding: 0px;
 }
+.thirdpage .text2 {
+  width: 23.4375%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0px;
+  padding: 10px 0px;
+}
 .thirdpage .text1 {
   width: 76.25%;
   height: auto;
   float: left;
   margin-left: 5%;
+}
+.thirdpage .next {
+  width: 46.875%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0px;
+  padding: 10px 0px;
 }
 .thirdpage .mini {
   float: right;
@@ -841,7 +862,7 @@ img {
   display: none;
 }
 .fourthpage .text {
-  width: 79.6875%;
+  width: 100%;
   height: auto;
   margin: 0 auto;
   padding: 0px;
@@ -854,7 +875,7 @@ img {
   height: auto;
   margin: 0 auto;
   padding: 0px;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
   background-size: contain;
   text-align: center;
   margin-top: 13px;
@@ -891,7 +912,7 @@ img {
   width: 86%;
   height: 60px;
   line-height: 20px;
-  font-size: 14px;
+  font-size: 16px;
   margin: 0 auto;
   padding: 2%;
   border: none;
@@ -903,6 +924,13 @@ img {
 }
 .fourthpage .box-item textarea::-webkit-input-placeholder {
   color: #ffd200;
+}
+.fourthpage .text2 {
+  width: 23.4375%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0px;
+  padding: 10px 0px;
 }
 .fourthpage .submit {
   width: 46.875%;
@@ -916,7 +944,7 @@ img {
 }
 .fifth .pet {
   position: absolute;
-  top: 29%;
+  top: 38%;
   left: 16%;
   width: 69%;
   height: auto;
@@ -943,6 +971,20 @@ img {
   height: auto;
   margin-left: -23.4375%;
 }
+.secondpage,
+.thirdpage,
+.fourthpage,
+.fifth {
+  position: relative;
+}
+.back {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 10px;
+  width: 9.375%;
+  height: auto;
+}
 .sharebox,
 .shareweixin,
 .loading {
@@ -959,15 +1001,7 @@ img {
 .shareweixin a,
 .loading a {
   display: inline-block;
-  margin-top: 65%;
   text-align: center;
-  width: 24%;
-  height: auto;
-}
-.sharebox a img,
-.shareweixin a img,
-.loading a img {
-  width: 50%;
 }
 .sharebox p,
 .shareweixin p,
@@ -976,6 +1010,53 @@ img {
   color: #fff;
   font-style: 16px;
   text-align: center;
+}
+.sharebox .box {
+  width: 263px;
+  height: 214.5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0px);
+  background: url("../img/sharebox.jpg") no-repeat center center;
+  background-color: transparent;
+  background-size: cover;
+}
+.sharebox .box a {
+  width: 70px;
+  height: 70px;
+}
+.sharebox .box .weixin {
+  position: absolute;
+  top: 46px;
+  left: 26px;
+}
+.sharebox .box .weibo {
+  position: absolute;
+  top: 46px;
+  left: 99px;
+}
+.sharebox .box .qweibo {
+  position: absolute;
+  top: 46px;
+  left: 172px;
+}
+.sharebox .box .renren {
+  position: absolute;
+  top: 126px;
+  left: 26px;
+}
+.sharebox .box .douban {
+  position: absolute;
+  top: 126px;
+  left: 99px;
+}
+.sharebox .box .close {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 30px;
+  height: 30px;
 }
 .share-weixin {
   position: absolute;

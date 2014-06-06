@@ -283,7 +283,7 @@ var Zepto=function(){function L(t){return null==t?String(t):j[T.call(t)]||"objec
      Begin main.coffee
 --------------------------------------------
  */
-var canvas, createAnimal, createimg, init, insetIMG, isScrolling_move, myFunction, postimg, readyto, selectType, showShareBox, stage, star;
+var back1, back2, back3, canvas, createAnimal, createimg, init, insetIMG, isScrolling_move, myFunction, postimg, readyto, selectType, showShareBox, stage, star, _index;
 
 isScrolling_move = false;
 
@@ -320,6 +320,9 @@ $(document).ready(function() {
     if ($(e.target).is(".sharebox")) {
       return $(".sharebox").hide();
     }
+  });
+  $(".close").click(function() {
+    return $(".sharebox").hide();
   });
   $(".shareweixin").click(function() {
     return $(".shareweixin").hide();
@@ -376,6 +379,26 @@ star = function() {
   return $(".secondpage").show();
 };
 
+back1 = function() {
+  $(".homepage").show();
+  return $(".secondpage").hide();
+};
+
+back2 = function() {
+  $(".homepage").hide();
+  $(".secondpage").show();
+  return $(".thirdpage").hide();
+};
+
+back3 = function() {
+  $(".homepage").hide();
+  $(".secondpage").hide();
+  $(".thirdpage").show();
+  return $(".fourthpage").hide();
+};
+
+_index = 0;
+
 selectType = function(e) {
   var x;
   $(".homepage").hide();
@@ -383,6 +406,7 @@ selectType = function(e) {
   $(".thirdpage").show();
   x = $(".slide-group").width() * (e - 1);
   console.log(x, e, $(".slide-group").width());
+  _index = e;
   $(".slide-group").css({
     "-webkit-transition": "0s",
     "transition": "0s",
@@ -400,10 +424,15 @@ readyto = function(e) {
   $(".homepage").hide();
   $(".secondpage").hide();
   $(".thirdpage").hide();
-  return insetIMG($(e).attr('src'));
+  if (e) {
+    return insetIMG($(e).attr('src'));
+  } else {
+    return insetIMG($(".slide-group .slide").eq(_index - 1).find("img").attr('src'));
+  }
 };
 
 myFunction = function(evt) {
+  console.log(evt.detail.slideNumber);
   $("#slidermini span").removeClass('on');
   return $("#slidermini span").eq(evt.detail.slideNumber).addClass('on');
 };
@@ -426,6 +455,10 @@ createimg = function() {
   var bg, dataURL, messageField, val;
   val = $("[name=text]").val() || $("[name=text]").html();
   console.log(val);
+  if (val === "") {
+    alert("请输入文字.");
+    return false;
+  }
   $("[name=text]").hide();
   messageField = new createjs.Text(val, 'normal 24px Arial', "#ffd200");
   messageField.maxWidth = 445 - 40;

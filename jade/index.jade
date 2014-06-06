@@ -1,7 +1,7 @@
 extends layout
 //- 标题
 block title
-	| 萌宠
+	| 主人不在家 猜我在干嘛？
 
 //- 内容
 block content_here
@@ -10,14 +10,16 @@ block content_here
 		div.banner
 			img(src="img/banner-1.jpg")
 		div.text
-			img(src="img/banner-text.jpg")
+			img(src="img/text-new.jpg")
 		div.star(onclick="star()")
 			img(src="img/btn-join.jpg")
-		div.text1
+		//- div.text1
 			img(src="img/text-1.jpg")
 	div.secondpage
+		div.back(onclick="back1()")
+			img(src="img/back.png")
 		div.text
-			img(src="img/banner-text.jpg")
+			img(src="img/text-new.jpg")
 		div.list.clearfix
 			div.box-item(onclick="selectType(1)")
 				img#ani1(src="") 
@@ -32,20 +34,28 @@ block content_here
 				img#ani5(src="") 
 			div.box-item(onclick="selectType(6)")
 				img#ani6(src="")
-		div.text1
-			img(src="img/text-2.jpg")
-		div.mini
-			img(src="img/icon-list.png")
+		div.clearfix
+			div.text1
+				img(src="img/text-new-1.png")
+			div.mini
+				img(src="img/icon-list.png")
+		div.next(onclick="selectType(1)")
+			img(src="img/nextstep.jpg")
 	div.thirdpage.clearfix
+		div.back(onclick="back2()")
+			img(src="img/back.png")
 		div.text
-			img(src="img/banner-text.jpg")
+			img(src="img/text-new.jpg")
 		div.box-item
 			#mySlider.slider
 				div.slide-group
 					-for (var i=0;i<6;i++)
 						div.slide
 							img(src="",onclick="readyto(this)")
-		div.text1
+			div.text2
+				img(src="img/text-new-2.png")
+
+		//- div.text1
 			img(src="img/text-3.jpg")
 		div#slidermini.mini
 			span.on
@@ -54,14 +64,20 @@ block content_here
 			span
 			span
 			span
+		div.next(onclick="readyto(false)")
+			img(src="img/nextstep.jpg")
 	div.fourthpage
+		div.back(onclick="back3()")
+			img(src="img/back.png")
 		div.text
-			img(src="img/banner-text.jpg")
+			img(src="img/text-new.jpg")
 		div.box-item
 			div.slide
 				//- img(src="img/car1.jpg")
 				canvas#canvas(width="445",height="445")
 				textarea(name="text",type="text",placeholder="请输入文字")
+			div.text2
+				img(src="img/text-new-3.png")
 		div.submit(onclick="createimg()")
 			img(src="img/btn-submit.jpg")
 	div.loading
