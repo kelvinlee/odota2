@@ -143,12 +143,12 @@ createimg = ->
 		alert "请输入文字."
 		return false
 	$("[name=text]").hide()
-	messageField = new createjs.Text val, 'normal 24px Arial', "#ffd200"
+	messageField = new createjs.Text val, 'bold 26px Arial', "#ffd200"
 	messageField.maxWidth = 445 - 40
 	messageField.textAlign= "left"
 	messageField.lineHeight = 34
 	messageField.x = 20
-	messageField.y = canvas.height-71*1.6
+	messageField.y = canvas.height-71*1.7
 
 	bg = new createjs.Shape()
 	# 黑色背景底图

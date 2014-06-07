@@ -691,8 +691,11 @@ img {
   margin: 0 auto;
   padding: 0px;
 }
+.secondpage .pt10 {
+  padding-top: 10px;
+}
 .secondpage .list {
-  width: 310px;
+  width: 90%;
   height: auto;
   margin: 0 auto;
   padding: 0px;
@@ -703,10 +706,10 @@ img {
   position: relative;
   background: url("../img/box-bg.jpg") no-repeat center top;
   background-color: transparent;
-  width: 90px;
-  height: 120px;
+  width: 25%;
+  /* height: 120px; */
   background-size: contain;
-  padding: 4px;
+  padding: 2% 3% 5% 3%;
   text-align: center;
   display: inline-block;
   margin-right: 2px;
@@ -913,6 +916,7 @@ img {
   height: 60px;
   line-height: 20px;
   font-size: 16px;
+  font-weight: bold;
   margin: 0 auto;
   padding: 2%;
   border: none;
