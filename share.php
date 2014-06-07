@@ -26,9 +26,9 @@
   <body onload="">
     <div class="fifth">
       <a href="index.html" class="back"><img src="img/back.png" alt=""></a>
-      <img id="image" src="<?php echo $row[0]["url"]?>" class="pet"><img src="img/share-bg.jpg">
+      <img id="image" src="http://www.odota2.com/<?php echo $row[0]["url"]?>" class="pet"><img src="img/share-bg.jpg">
       <div class="sharebtn"><img src="img/sharebtn.png"></div>
-      <!-- <div class="joinbtn"><a href="index.html"><img src="img/btn-join.jpg" alt=""></a></div> -->
+      <div class="joinbtn"><a href="index.html"><img src="img/btn-join.jpg" alt=""></a></div>
     </div>
     <div class="sharebox">
       <div class="box">
